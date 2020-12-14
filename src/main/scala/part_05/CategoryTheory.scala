@@ -19,20 +19,20 @@ object CategoryTheory {
 
   // Exercise: complete the map function
   case class Container[A](content: A) {
-    def map[B](f: A => B): Container[B] = Container(f(content))
+    def map[B](f: A => B): Container[B] = ???
   }
 
   // function composition
   val c1: Container[Int] = Container(34)
-  val mapped1a: Container[Int] = c1.map(add5).map(times2)
-  val mapped1b: Container[Int] = c1.map(add5 andThen times2)
-  val mapped1c: Container[Int] = c1.map(times2 compose add5)
+  lazy val mapped1a: Container[Int] = c1.map(add5).map(times2)
+  lazy val mapped1b: Container[Int] = c1.map(add5 andThen times2)
+  lazy val mapped1c: Container[Int] = c1.map(times2 compose add5)
 
   // container can contain anything
   val c2: Container[List[String]] = Container(List("a", "bb", "ccc"))
 
   // Exercise: map each item in the List in the Container to the length of the String
-  val mapped2: Container[List[Int]] = c2.map(_.map(_.length))
+  lazy val mapped2: Container[List[Int]] = ???
 
   // [Applicative]
   // Functor + applicative & pure methods
@@ -70,10 +70,10 @@ object CategoryTheory {
       case Nil                => Some(Nil)
       case None :: _          => None
       case Some(head) :: Nil  => Some(head :: Nil)
-      case Some(head) :: tail => sequenceOption(tail).map(head :: _)
+      case Some(head) :: tail => ???
     }
 
-  val listOpts: Option[List[Int]] = sequenceOption(
+  lazy val listOpts: Option[List[Int]] = sequenceOption(
     List(Some(3), Some(5), Some(9))
   )
 
@@ -88,8 +88,8 @@ object CategoryTheory {
   val l4: List[Int] = List(Some(1), Some(2), None, Some(3)).flatMap(_.toList)
 
   // Exercise: combine flatMap & map to convert a List of Strings to a list of Ints
-  val l5: List[Int] =
-    List("1,2", "3,4,5", "6,7").flatMap(_.split(",")).map(_.toInt)
+  lazy val l5: List[Int] =
+    List("1,2", "3,4,5", "6,7").map(_.toInt)
 
   // [Foldable]
   // adds fold-like methods to summarize data structures
@@ -108,6 +108,6 @@ object CategoryTheory {
 
   // Exercise: Create a List of Ints between 0 and 100 without 7 in the number
   val noSevens: List[Int] =
-    (0 until 100).toList.filterNot(_.toString.contains("7"))
+    (0 until 100).toList
 
 }

@@ -10,7 +10,7 @@ object StrictnessLazyness {
   def printTwice(f: => Int): Int = f + f
 
   // Exercise: fix this method to become non-strictly evaluated and only throw the error when isException is true
-  def raiseException(isException: Boolean, exception: => Exception): Unit = {
+  def raiseException(isException: Boolean, exception: Exception): Unit = {
     if (isException) exception
   }
 

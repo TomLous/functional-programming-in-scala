@@ -10,21 +10,15 @@ object ControlStructure {
   def cube(x: Int): Int = x * x * x
 
   // Exercise: Complete method with basic if/else
-  def abs(x: Double): Double = {
-    if (x >= 0) x
-    else -x
-  }
+  def abs(x: Double): Double = ???
 
   // Exercise: Complete method with basic recursion
-  def factorial(n: Int): Int =
-    if (n == 0) 1
-    else n * factorial(n - 1)
+  def factorial(n: Int): Int = ???
 
   // Exercise: Complete method and inner methods
   def sqrt(x: Double) = {
     def sqrtIter(guess: Double, x: Double): Double =
-      if (isGoodEnough(guess, x)) guess
-      else sqrtIter(improve(guess, x), x)
+      ???
 
     def improve(guess: Double, x: Double) =
       (guess + x / guess) / 2

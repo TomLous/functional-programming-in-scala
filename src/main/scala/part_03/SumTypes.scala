@@ -13,7 +13,7 @@ object SumTypes {
   val none: Option[Nothing] = None
 
   // Exercise: implement only even to return the integer wrapped in Some when even, else None
-  def onlyEven(i: Int): Option[Int] = if (i % 2 == 0) Some(i) else None
+  def onlyEven(i: Int): Option[Int] = ???
 
   onlyEven(42) match {
     case Some(i) => println(s"$i is even")
@@ -26,8 +26,8 @@ object SumTypes {
 
   // Exercise: implement realFactorial, using ControlStructure.factorial for the computation
   def realFactorial(n: Int): Either[String, Int] = {
-    if (n < 0) Left("Factorials below 0 don't exist")
-    else Right(ControlStructure.factorial(n))
+    if (n < 0) ???
+    else ???
   }
 
   realFactorial(-3) match {
