@@ -15,7 +15,7 @@ object SumTypes {
   // Exercise: implement only even to return the integer wrapped in Some when even, else None
   def onlyEven(i: Int): Option[Int] = ???
 
-  onlyEven(42) match {
+  lazy val res1 = onlyEven(42) match {
     case Some(i) => println(s"$i is even")
     case None    => println(s"There was an odd number")
   }
@@ -30,7 +30,7 @@ object SumTypes {
     else ???
   }
 
-  realFactorial(-3) match {
+  lazy val res2 = realFactorial(-3) match {
     case Right(r) => println(s"The result is $r")
     case Left(l)  => println(l)
   }

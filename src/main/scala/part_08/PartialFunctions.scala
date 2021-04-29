@@ -31,10 +31,10 @@ object PartialFunctions {
   val divErr: Double = divide(12, 0)
 
   // Exercise, using non-exhausitive matches, `orElse` and `andThen` chain the (partial) functions into one chain function
-  val doubleEvens: PartialFunction[Int, Int] = ???
-  val tripleOdds: PartialFunction[Int, Int] = ???
-  val addFive: Function1[Int, Int] = ???
+  lazy val doubleEvens: PartialFunction[Int, Int] = ???
+  lazy val tripleOdds: PartialFunction[Int, Int] = ???
+  lazy val addFive: Function1[Int, Int] = ???
 
-  val chainAction: Int => Int = ???
+  lazy val chainAction: Int => Int = ???
 
 }

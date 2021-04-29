@@ -86,9 +86,9 @@ object TypeVariance {
   // If Dog <: Animal, does a List[Dog] <: List[Animal] ?
 
   val anAnimal: Animal = lassie
-  val listAnimals: List[Animal] = ???
+  lazy val listAnimals: List[Animal] = ???
 
-  val varianceOfList = ??? // "co", "contra" or "in"
+  lazy val varianceOfList = ??? // "co", "contra" or "in"
 
   // Exercise: fix the variance correctly
   trait Vet[T] {
@@ -103,7 +103,7 @@ object TypeVariance {
       }
     }
 
-  val myDogVet: Vet[Dog] = ??? //gimmeAVet()
+  lazy val myDogVet: Vet[Dog] = ??? //gimmeAVet()
   myDogVet.heal(champ)
 
 }
