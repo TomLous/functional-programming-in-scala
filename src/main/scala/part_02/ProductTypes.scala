@@ -6,8 +6,10 @@ object ProductTypes {
   case class Course(title: String, description: String, durationHours: Int)
 
   // Exercise: Create two courses that pass the unit test
-  lazy val course1: Course = ???
-  lazy val course2: Course = ???
+  val course1: Course =
+    Course("Data for DevOps", "How to build CI/CD for data products", 4)
+  val course2: Course =
+    Course("Functional Programming in Scala", "Learn Scala & FP", 5)
 
   // companion objects
   object Course {
@@ -15,7 +17,7 @@ object ProductTypes {
 
     // Exercise: Complete static function
     def defaultCourse(name: String, description: String): Course =
-      ???
+      Course(name, description, defaultDurationHours)
   }
 
   // sealed traits
@@ -28,7 +30,7 @@ object ProductTypes {
   def personToString(p: Person): String =
     p match {
       case Teacher(n)       => n
-      case Student(f, l, _) => ???
+      case Student(f, l, _) => s"$f $l"
     }
 
   // tuples: basic product types
@@ -36,7 +38,9 @@ object ProductTypes {
   val tuple2: (Int, Boolean, Double) = (44, true, 7.99)
 
   // Exercise: handle tuples with doubles in 3rd position
-  def tupleToDouble(t: (Any, Any, Double)): Double = ???
+  def tupleToDouble(t: (Any, Any, Double)): Double = {
+    t._3
+  }
 
   // List. (standard library)
   // immutable, recursive & homogeneous
@@ -57,6 +61,6 @@ object ProductTypes {
   def reverseInts(list: List[Int]): List[Int] =
     list match {
       case Nil          => Nil
-      case head :: tail => ???
+      case head :: tail => reverseInts(tail) :+ head
     }
 }

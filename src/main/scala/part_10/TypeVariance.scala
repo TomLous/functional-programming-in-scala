@@ -40,7 +40,7 @@ object TypeVariance {
   // So ContainerCovariant[Paper] is a subclass of ContainerCovariant[Waste]
 
 //  val wasteContainer: ContainerInvariant[Waste] =
-//    new ContainerInvariant[Paper](new Paper) <- Requires Waste
+//    new ContainerInvariant[Paper](new Paper) //<- Requires Waste
 
   val wasteContainer: ContainerCovariant[Waste] =
     new ContainerCovariant[Paper](new Paper)
@@ -86,12 +86,13 @@ object TypeVariance {
   // If Dog <: Animal, does a List[Dog] <: List[Animal] ?
 
   val anAnimal: Animal = lassie
-  val listAnimals: List[Animal] = ???
+  val dogList: List[Dog] = List(lassie, champ, major)
+  val listAnimals: List[Animal] = dogList
 
-  val varianceOfList = ??? // "co", "contra" or "in"
+  val varianceOfList = "co" // "co", "contra" or "in"
 
   // Exercise: fix the variance correctly
-  trait Vet[T] {
+  trait Vet[-T] {
     def heal(animal: Animal): Boolean
   }
 
@@ -103,7 +104,7 @@ object TypeVariance {
       }
     }
 
-  val myDogVet: Vet[Dog] = ??? //gimmeAVet()
+  val myDogVet: Vet[Dog] = gimmeAVet()
   myDogVet.heal(champ)
 
 }

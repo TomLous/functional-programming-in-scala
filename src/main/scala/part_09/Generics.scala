@@ -9,7 +9,7 @@ object Generics {
   class Motorcycle extends Vehicle
   class Bicycle extends Vehicle
   class Tricycle extends Bicycle
-  class Vegetable
+  class Vegetable extends Thing
 
   // Class Parking1 takes any type A to place. Bit strange
   case class Parking1[A](place: A)
@@ -22,7 +22,7 @@ object Generics {
   case class Parking2(place: Car)
 
   val p2A: Parking2 = Parking2(new Car)
-//  val p2B: Parking2 = Parking2(Motorcycle())
+//  val p2B: Parking2 = Parking2(new Motorcycle)
   val p2C: Parking2 = Parking2(new Jeep)
 
   // Class Parking3 takes any type A that inherits from Vehicle
@@ -43,10 +43,11 @@ object Generics {
 
   // Exercise: create Parking 5 so that it accepts Vehicles, Bicylces but not Tricycles
 
-  case class Parking5[A](place: A)
+  case class Parking5[A >: Bicycle <: Vehicle](place: A)
   val p5A: Parking5[Vehicle] = Parking5(new Vehicle {})
   val p5B: Parking5[Bicycle] = Parking5(new Bicycle)
-  val p5C: Parking5[Car] = Parking5(new Car) // <- should not work
-  val p5D: Parking5[Tricycle] = Parking5(new Tricycle) // <- should not work
+//  val p5C: Parking5[Car] = Parking5(new Car) // <- should not work
+//  val p5D: Parking5[Tricycle] = Parking5(new Tricycle) // <- should not work
+//  val p5E: Parking5[Thing] = Parking5(new Thing {}) // <- should not work
 
 }

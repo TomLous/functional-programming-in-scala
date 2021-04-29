@@ -19,7 +19,7 @@ object HigherOrderFunctions {
   // Exercise: complete this method
   def sum(f: Int => Int, a: Int, b: Int): Int =
     if (a > b) 0
-    else ???
+    else f(a) + sum(f, a + 1, b)
 
   // We can rewrite the first methods
   def id(x: Int): Int = x

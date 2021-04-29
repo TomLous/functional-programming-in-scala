@@ -90,10 +90,13 @@ object ForComprehension {
   val listB: List[Int] = (0 to 10).toList
   val listC: List[Int] = (0 to 10).toList
 
-  val result: List[(Int, Int, Int)] = Nil
-//  val result: List[(Int, Int, Int)] = for{
-//
-//  } yield ( )
+  val result: List[(Int, Int, Int)] = for {
+    itemA <- listA
+    itemB <- listB
+    if itemA * itemB < 10
+    itemC <- listC
+    if itemB + itemC < 5
+  } yield ((itemA, itemB, itemC))
 
   //
 
